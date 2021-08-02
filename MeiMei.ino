@@ -1,24 +1,11 @@
+//Like Makey Makey but using BluePill (i guess a fake version) with HID bootloader, 
+//the ADCTouchSensor library has been modified to compatibility with Arduino stm32 core
+//installed from the Boards Manager.
+//Rulo Varga
+
 #include <ADCTouchSensor.h>                                  
 #include "Keyboard.h"                                                                                                                                                                                   
-// 
-// This requires an stm32f1 board compatible with the no-grounding-pin feature of ADCTouchSensor.
-//
 
-#ifdef ADCTOUCH_INTERNAL_GROUNDING
-# define GROUNDED_PIN -1
-#endif
-
-#if defined(ARDUINO_ARCH_AVR)
-# define PIN1 A0
-# define PIN2 A1
-# define PIN1 A2
-# define PIN2 A3
-# define PIN1 A4
-# define PIN2 A5
-# define PIN1 A6
-# define PIN2 A7
-# define PIN1 A8
-#else
 # define PIN1 PA0
 # define PIN2 PA1
 # define PIN1 PA2
@@ -28,10 +15,7 @@
 # define PIN1 PA6
 # define PIN2 PA7
 # define PIN1 PB0
-# ifndef ADCTOUCH_INTERNAL_GROUNDING
-#  define GROUNDED_PIN PB1
-# endif
-#endif
+# define GROUNDED_PIN PB1
 
 #define NUM_PINS  9
 unsigned pins[NUM_PINS] = {PA0,PA1,PA2,PA3,PA4,PA5,PA6,PA7,PB0};
